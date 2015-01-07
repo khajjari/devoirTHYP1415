@@ -7,6 +7,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Trombinoscope HajjariKarima</title>
+		<p>Trombinoscope HajjariKarima THYP1415</p>
         <meta charset="UTF-8">
     </head>
     <body>

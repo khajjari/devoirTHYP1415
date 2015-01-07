@@ -1,0 +1,48 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$xml = simplexml_load_file('https://picasaweb.google.com/data/feed/base/user/112537161896190034287/albumid/5931538032377292977?alt=rss&kind=photo&authkey=Gv1sRgCJjJwc265LnxigE&hl=fr');
+	
+   
+try {
+      $bdd = mysqli_connect('localhost' ,'root', '', 'flux_etu')or die ("error".mysqli_error($flux_etu)) ;;
+    }
+     catch(Exception $ex) {
+	die('Erreur : '.$e->getMessage());
+   }
+	$query="select * from etudiant "
+                . " "  or die ("error".mysqli_error($flux_etu));
+	$req = $bdd->query($query);
+	
+	if ($req = $bdd->query($query))
+
+        echo "<table border='1'>";
+         
+	while ( $ligne =$req->fetch_row())
+	{
+	     /// J'ai arreter ic avec Error d'afichage  
+           // echo "<tr> <td> " . $ligne[0]."</td>  "
+           // . " <td> " . $ligne[1]."</td>  "        
+            // ." <td> " . $ligne[2]."</td>  " 
+            // ." <td> " . $ligne[3]."</td>  "  ;
+               
+	}
+       
+	 
+         foreach ($xml->channel->item as $tof) {
+            
+		echo " <td> <img src='".$tof->enclosure["url"]."'/> </td>";
+                echo " <td> " . $tof->title . "</td>";
+            
+	}
+         echo "</tr></table> ";
+        
+        $req->close();
+        
+?>
+
